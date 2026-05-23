@@ -102,8 +102,8 @@ const ChatPage = () => {
   // Filter contacts by search
   const filteredContacts = usersList.filter(contact => {
     return (
-      contact.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      contact.email.toLowerCase().includes(searchQuery.toLowerCase())
+      (contact.displayName || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (contact.email || '').toLowerCase().includes(searchQuery.toLowerCase())
     );
   });
 

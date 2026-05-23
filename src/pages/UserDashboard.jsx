@@ -162,9 +162,9 @@ const UserDashboard = () => {
   // Filter & Search Logic
   const filteredTasks = tasks.filter(task => {
     const matchesSearch = 
-      task.title.toLowerCase().includes(search.toLowerCase()) || 
-      task.description.toLowerCase().includes(search.toLowerCase()) ||
-      task.category.toLowerCase().includes(search.toLowerCase());
+      (task.title || '').toLowerCase().includes(search.toLowerCase()) || 
+      (task.description || '').toLowerCase().includes(search.toLowerCase()) ||
+      (task.category || '').toLowerCase().includes(search.toLowerCase());
       
     const matchesStatus = statusFilter === "all" || task.status === statusFilter;
     const matchesPriority = priorityFilter === "all" || task.priority === priorityFilter;

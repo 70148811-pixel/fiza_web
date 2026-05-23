@@ -206,11 +206,11 @@ const AdminDashboard = () => {
   // Filter Tasks
   const filteredTasks = tasks.filter(task => {
     const matchesSearch = 
-      task.title.toLowerCase().includes(taskSearch.toLowerCase()) || 
-      task.description.toLowerCase().includes(taskSearch.toLowerCase()) ||
-      task.category.toLowerCase().includes(taskSearch.toLowerCase()) ||
-      task.userName.toLowerCase().includes(taskSearch.toLowerCase()) ||
-      task.userEmail.toLowerCase().includes(taskSearch.toLowerCase());
+      (task.title || '').toLowerCase().includes(taskSearch.toLowerCase()) || 
+      (task.description || '').toLowerCase().includes(taskSearch.toLowerCase()) ||
+      (task.category || '').toLowerCase().includes(taskSearch.toLowerCase()) ||
+      (task.userName || '').toLowerCase().includes(taskSearch.toLowerCase()) ||
+      (task.userEmail || '').toLowerCase().includes(taskSearch.toLowerCase());
       
     const matchesStatus = statusFilter === "all" || task.status === statusFilter;
     const matchesPriority = priorityFilter === "all" || task.priority === priorityFilter;
@@ -222,9 +222,9 @@ const AdminDashboard = () => {
   // Filter Users
   const filteredUsers = systemUsers.filter(u => {
     return (
-      u.displayName.toLowerCase().includes(userSearch.toLowerCase()) ||
-      u.email.toLowerCase().includes(userSearch.toLowerCase()) ||
-      u.role.toLowerCase().includes(userSearch.toLowerCase())
+      (u.displayName || '').toLowerCase().includes(userSearch.toLowerCase()) ||
+      (u.email || '').toLowerCase().includes(userSearch.toLowerCase()) ||
+      (u.role || '').toLowerCase().includes(userSearch.toLowerCase())
     );
   });
 
